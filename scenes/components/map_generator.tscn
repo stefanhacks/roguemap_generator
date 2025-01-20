@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfa0vjbwdsybm"]
+
+[ext_resource type="Script" path="res://scenes/components/map_generator.gd" id="1_f7oer"]
+[ext_resource type="PackedScene" uid="uid://ctgenp6604kl1" path="res://scenes/components/room_generator.tscn" id="2_bnxyc"]
+
+[node name="MapGenerator" type="Node"]
+script = ExtResource("1_f7oer")
+
+[node name="BackgroundGenerator" parent="." instance=ExtResource("2_bnxyc")]
+
+[node name="Rooms" type="Node" parent="."]

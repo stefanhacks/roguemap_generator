@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctabjqicmqxet"]
+
+[ext_resource type="Script" path="res://scenes/tests/test_square_generator.gd" id="1_4ktey"]
+[ext_resource type="PackedScene" uid="uid://ctgenp6604kl1" path="res://scenes/components/room_generator.tscn" id="2_ki7ag"]
+[ext_resource type="Script" path="res://scenes/tests/test_camera_2d.gd" id="3_1bsow"]
+[ext_resource type="TileSet" uid="uid://c4gv0efp0nyab" path="res://tilesets/dungeon_tile_set.tres" id="4_07i4g"]
+
+[node name="TestSquareGenerator" type="Node2D"]
+script = ExtResource("1_4ktey")
+
+[node name="RoomGenerator" parent="." instance=ExtResource("2_ki7ag")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_1bsow")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_07i4g")

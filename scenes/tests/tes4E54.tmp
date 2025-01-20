@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq7bk7gbkr750"]
+
+[ext_resource type="Script" path="res://scenes/tests/test_scene_subdivider.gd" id="1_41fjn"]
+[ext_resource type="PackedScene" uid="uid://bfa0vjbwdsybm" path="res://scenes/components/map_generator.tscn" id="2_xu7w2"]
+
+[node name="TestSceneSubdivider" type="Node2D"]
+script = ExtResource("1_41fjn")
+
+[node name="MapGenerator" parent="." instance=ExtResource("2_xu7w2")]
+
+[editable path="MapGenerator"]
