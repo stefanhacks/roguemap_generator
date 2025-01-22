@@ -14,9 +14,15 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("generate"):
 		_generate_room()
+	elif event.is_action_pressed("make_road"):
+		if tile_map_layer != null:
+			_generate_roads()
 
 
 func _generate_room() -> void:
 	tile_map_layer.clear()
 	map_generator.make_map(Vector2i(-1, -1), screen_dimensions + Vector2i(1, 2))
-	
+
+
+func _generate_roads() -> void:
+	map_generator.make_roads()

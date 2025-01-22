@@ -6,6 +6,7 @@ extends Node
 
 @onready var room_nodes: Node = $Rooms
 @onready var background_generator: RoomGenerator = $BackgroundGenerator
+@onready var path_generator: PathGenerator = $PathGenerator
 
 var tile_map_layer: TileMapLayer
 var next_gen_id = 0
@@ -25,6 +26,7 @@ func make_tile_map_layer() -> TileMapLayer:
 	
 	tile_map_layer = new_tile_map_layer
 	background_generator.tile_map_layer = tile_map_layer
+	path_generator.tile_map_layer = tile_map_layer
 	
 	add_child(tile_map_layer)
 	return new_tile_map_layer
@@ -32,11 +34,11 @@ func make_tile_map_layer() -> TileMapLayer:
 
 func make_map(origin: Vector2i, end: Vector2i) -> void:
 	var dimensions = end - origin
-	make_background(dimensions)
+	_make_background(dimensions)
 	
 	# map_areas cells are null'd after being merged function
-	var map_areas: Array[Array] = make_slices(dimensions)
-	var merged_map_areas: Array[Array] = merge_areas(map_areas)
+	var map_areas: Array[Array] = _make_slices(dimensions)
+	var merged_map_areas: Array[Array] = _merge_areas(map_areas)
 	
 	# Room counting
 	var room_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -45,7 +47,7 @@ func make_map(origin: Vector2i, end: Vector2i) -> void:
 	var rooms_to_skip = room_numbers.slice(0, skips + 1)
 	
 	# Shuffles non merged map_area lines to create more diversity
-	var map: Array[Array] = distribute_areas(map_areas, merged_map_areas)
+	var map: Array[Array] = _distribute_areas(map_areas, merged_map_areas)
 	var offset: Vector2i = Vector2i.ZERO
 	var current_room = 0
 	
@@ -54,7 +56,7 @@ func make_map(origin: Vector2i, end: Vector2i) -> void:
 			var area = map[row][column]
 			if typeof(area) != TYPE_INT:
 				if(!current_room in rooms_to_skip):
-					make_room(area, offset)
+					_make_room(area, offset)
 				current_room += 1
 				offset = offset + Vector2i(area.w, 0)
 			elif area == MERGED_SOUTH:
@@ -63,14 +65,21 @@ func make_map(origin: Vector2i, end: Vector2i) -> void:
 		offset = Vector2i(0, offset.y + slices_through_y[row])
 
 
-func make_background(dimensions: Vector2i) -> void:
+func make_roads() -> void:
+	var rooms = room_nodes.get_children().duplicate()
+	rooms.shuffle()
+	for i in range(1, rooms.size()):
+		path_generator.make_path(rooms[i - 1].room, rooms[i].room)
+
+
+func _make_background(dimensions: Vector2i) -> void:
 	background_generator.draw_square(Vector2i(-1, -1), dimensions + Vector2i(1, 2), true)
 	for child in room_nodes.get_children(): child.queue_free()
 
 
-func make_slices(dimensions: Vector2i) -> Array[Array]:
-	slices_through_x = slice_through(dimensions.x, 3)
-	slices_through_y = slice_through(dimensions.y, 3)
+func _make_slices(dimensions: Vector2i) -> Array[Array]:
+	slices_through_x = _slice_through(dimensions.x, 3)
+	slices_through_y = _slice_through(dimensions.y, 3)
 	
 	# Shuffle
 	slices_through_x.shuffle()
@@ -85,7 +94,7 @@ func make_slices(dimensions: Vector2i) -> Array[Array]:
 	return map
 
 
-func slice_through(length: int, size: int) -> Array[int]:
+func _slice_through(length: int, size: int) -> Array[int]:
 	return [
 		length / size * proportions[0],
 		length / size * proportions[1], 
@@ -93,7 +102,7 @@ func slice_through(length: int, size: int) -> Array[int]:
 	]
 
 
-func merge_areas(map_areas: Array[Array]) -> Array[Array]:
+func _merge_areas(map_areas: Array[Array]) -> Array[Array]:
 	var map_with_merged_cells: Array[Array] = [
 		[null, null, null],
 		[null, null, null],
@@ -141,7 +150,7 @@ func merge_areas(map_areas: Array[Array]) -> Array[Array]:
 	return map_with_merged_cells
 
 
-func distribute_areas(map_areas: Array[Array], merged_map_areas: Array[Array]) -> Array[Array]:
+func _distribute_areas(map_areas: Array[Array], merged_map_areas: Array[Array]) -> Array[Array]:
 	# map_areas has "null" in spots where cells were merged
 	for row in map_areas.size():
 		var have_merged = map_areas[row].has(null)
@@ -156,7 +165,7 @@ func distribute_areas(map_areas: Array[Array], merged_map_areas: Array[Array]) -
 	return merged_map_areas
 
 
-func make_room(area: MapArea, offset: Vector2i) -> void:
+func _make_room(area: MapArea, offset: Vector2i) -> void:
 	var room: RoomGenerator = ROOM_GENERATOR.instantiate()
 	room.tile_map_layer = tile_map_layer
 	room.name = "RoomGenerator%s" % next_gen_id

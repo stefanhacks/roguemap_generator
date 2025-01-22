@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwsqn0mb3ekim"]
+
+[ext_resource type="Texture2D" uid="uid://se08o6kttfkr" path="res://assets/pixel_dungeon/dungeon_tileset_extended.png" id="1_ve7ye"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3niwg"]
+atlas = ExtResource("1_ve7ye")
+region = Rect2(96, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okpnk"]
+atlas = ExtResource("1_ve7ye")
+region = Rect2(96, 144, 16, 8)
+
+[node name="VerticalDoor" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_3niwg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = SubResource("AtlasTexture_okpnk")

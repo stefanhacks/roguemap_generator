@@ -32,5 +32,5 @@ func _unhandled_input(event: InputEvent) -> void:
 func _generate_room() -> void:
 	tile_map_layer.clear()
 	room_generator.draw_walled_room(target_room_width, target_room_height)
-	camera_2d.move_camera_to(Vector2i(target_room_width * 16 / 2, (target_room_height * 16 / 2) - 4))
+	camera_2d.position = Vector2i(floor(target_room_width * 16 / 2), floor((target_room_height * 16 / 2) - 4))
 	room_generator.slice_corners()

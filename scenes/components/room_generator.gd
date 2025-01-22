@@ -70,36 +70,35 @@ func draw_square(origin: Vector2i, end: Vector2i, is_wall = false, save_as_room 
 
 
 func slice_corners() -> void:
-	slice_top_left()
-	slice_top_right()
-	slice_bottom_left()
-	slice_bottom_right()
+	_slice_top_left()
+	_slice_top_right()
+	_slice_bottom_left()
+	_slice_bottom_right()
 
 
-func slice_top_left() -> void:
+func _slice_top_left() -> void:
 	var slice_width = floor(randf_range(0.2, 1) * width / 2)
 	var slice_height = floor(randf_range(0.2, 1) * height / 2)
 	draw_square(first_cell, first_cell + Vector2i(slice_width, slice_height), true, false)
-	
-	
-func slice_top_right() -> void:
+
+
+func _slice_top_right() -> void:
 	var slice_width = floor(randf_range(0.2, 1) * width / 2)
 	var slice_height = floor(randf_range(0.2, 1) * height / 2)
 	
 	var top_right = Vector2i(last_cell[0] + 1, first_cell[1])
 	draw_square(top_right + Vector2i(-slice_width, slice_height), top_right,  true, false)
-	
-	
-func slice_bottom_left() -> void:
+
+
+func _slice_bottom_left() -> void:
 	var slice_width = floor(randf_range(0.2, 1) * width / 2)
 	var slice_height = floor(randf_range(0.2, 1) * height / 2)
 	
 	var bottom_left = Vector2i(first_cell[0], last_cell[1] + 1)
 	draw_square(bottom_left, bottom_left + Vector2i(slice_width, -slice_height),  true, false)
-	
-	
-func slice_bottom_right() -> void:
+
+
+func _slice_bottom_right() -> void:
 	var slice_width = floor(randf_range(0.2, 1) * width / 2)
 	var slice_height = floor(randf_range(0.2, 1) * height / 2)
 	draw_square(last_cell - Vector2i(slice_width, slice_height), last_cell + Vector2i.ONE,  true, false)
-	
