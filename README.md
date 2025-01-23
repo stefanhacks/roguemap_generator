@@ -8,7 +8,7 @@
 ---
 
 ### Room algo works by:
-- First splits the screen in three zones with variable horizontal and vertical sizes.
+- Slices the screen in nine zones with variable horizontal and vertical sizes.
 - Merges one to three cells.
 - Randomizes horizontal lines which contain no merges.
 - Cuts out some of the areas for variety.
