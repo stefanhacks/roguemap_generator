@@ -1,9 +1,9 @@
-# Implementation of a Rogulike Map Generator. 
-###### Mostly everything is of my doing, including the ugly bits.
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fd4a5c58-9a14-4f27-b53e-a361fba9f18f" />
 </p>
+
+# Godot Roguelike Map Generator
+###### Mostly everything is of my own doing, including the ugly bits.
 
 ---
 
@@ -22,7 +22,7 @@
 - Has a method which connects all rooms by iterating through a shuffled list. This ensures all rooms are connected at least once.
 
 ### Graphics:
-- Original Tileset got from Pìxel Poem, on itch.io.
+- Original Tileset got from [Pìxel Poem, on itch.io](https://pixel-poem.itch.io/dungeon-assetpuck).
 - In order to understand Godot Tileset terrains, I had to change a bit and expand in some of its options.
 
 ### Shortcomings:
