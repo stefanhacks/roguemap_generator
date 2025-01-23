@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhgcso64ffnvt"]
+
+[ext_resource type="Script" path="res://scenes/components/path_generator.gd" id="1_ynbbj"]
+
+[node name="PathGenerator" type="Node"]
+script = ExtResource("1_ynbbj")

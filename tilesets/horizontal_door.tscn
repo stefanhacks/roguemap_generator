@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhf23lqfhmwlm"]
+
+[ext_resource type="Texture2D" uid="uid://se08o6kttfkr" path="res://assets/pixel_dungeon/dungeon_tileset_extended.png" id="1_hqqvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3niwg"]
+atlas = ExtResource("1_hqqvk")
+region = Rect2(80, 144, 16, 16)
+
+[node name="HorizontalDoor" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_3niwg")
+flip_h = true
