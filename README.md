@@ -32,6 +32,7 @@
 - Implementation might not be the most optimal one, I relied only on my own code and experience to implement this.
 
 ### Where to Go:
+- Comment the code.
 - Might make this prettier by adding custom rooms, objects and random objects within.
 - Define navigation zones, add agents.
 - IDK, not the current focus.
