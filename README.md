@@ -19,6 +19,8 @@
 - Shuffles the list of rooms.
 - Selects two random rooms.
 - Selects if pathway is going to be a simple corner or a have a short lengthy segment in between.
+- Selects a random spot within both rooms, within the center axis which is perpendicular to path, ensuring there's a tile there.
+- Draws a line between both spots.
 - Has a method which connects all rooms by iterating through a shuffled list. This ensures all rooms are connected at least once.
 
 ### Graphics:
@@ -28,3 +30,8 @@
 ### Shortcomings:
 - Tileset has repeated graphics. The reason for this is so I can compare the pathways from the Terrain editor with Godot's Documentation with less hassle.
 - Implementation might not be the most optimal one, I relied only on my own code and experience to implement this.
+
+### Where to Go:
+- Might make this prettier by adding custom rooms, objects and random objects within.
+- Define navigation zones, add agents.
+- IDK, not the current focus.
