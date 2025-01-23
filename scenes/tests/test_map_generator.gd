@@ -16,7 +16,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		_generate_room()
 	elif event.is_action_pressed("make_road"):
 		if tile_map_layer != null:
-			_generate_roads()
+			_make_roads()
+	elif event.is_action_pressed("add"):
+		if tile_map_layer != null:
+			_add_random_road()
 
 
 func _generate_room() -> void:
@@ -24,5 +27,9 @@ func _generate_room() -> void:
 	map_generator.make_map(Vector2i(-1, -1), screen_dimensions + Vector2i(1, 2))
 
 
-func _generate_roads() -> void:
+func _make_roads() -> void:
 	map_generator.make_roads()
+
+
+func _add_random_road() -> void:
+	map_generator.add_random_road()

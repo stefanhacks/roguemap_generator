@@ -14,13 +14,12 @@ var slices_through_x: Array[int]
 var slices_through_y: Array[int]
 
 const ROOM_GENERATOR = preload("res://scenes/components/room_generator.tscn")
+const tile_set: TileSet = preload("res://tilesets/dungeon_tile_set.tres")
 enum {MERGED_EAST, MERGED_SOUTH}
 
 
 func make_tile_map_layer() -> TileMapLayer:
-	var tile_set: TileSet = load("res://tilesets/dungeon_tile_set.tres")
 	var new_tile_map_layer = TileMapLayer.new()
-	
 	new_tile_map_layer.name = "TileMapLayer"
 	new_tile_map_layer.tile_set = tile_set
 	
@@ -66,10 +65,16 @@ func make_map(origin: Vector2i, end: Vector2i) -> void:
 
 
 func make_roads() -> void:
-	var rooms = room_nodes.get_children().duplicate()
+	var rooms = room_nodes.get_children()
 	rooms.shuffle()
 	for i in range(1, rooms.size()):
 		path_generator.make_path(rooms[i - 1].room, rooms[i].room)
+
+
+func add_random_road() -> void:
+	var rooms = room_nodes.get_children()
+	rooms.shuffle()
+	path_generator.make_path(rooms[0].room, rooms[1].room)
 
 
 func _make_background(dimensions: Vector2i) -> void:
