@@ -25,6 +25,7 @@
 
 ### Graphics:
 - Original Tileset got from [Pìxel Poem, on itch.io](https://pixel-poem.itch.io/dungeon-assetpuck).
+- Used [monogram](https://datagoblin.itch.io/monogram) as the UI font.
 - In order to understand Godot Tileset terrains, I had to change a bit and expand in some of its options.
 
 ### Shortcomings:
