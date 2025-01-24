@@ -3,6 +3,7 @@ extends Node
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var screen_size: Vector2i = get_viewport().get_visible_rect().size
 @onready var screen_dimensions: Vector2i = screen_size / 16
+@onready var ui: CanvasLayer = $UI
 
 var tile_map_layer: TileMapLayer
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("generate"):
+		ui.fade_ui()
 		_generate_room()
 	elif event.is_action_pressed("make_road"):
 		if tile_map_layer != null:
