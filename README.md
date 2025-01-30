@@ -3,7 +3,6 @@
 </p>
 
 # Godot Roguelike Map Generator
-###### Mostly everything is of my own doing, including the ugly bits.
 
 ---
 
