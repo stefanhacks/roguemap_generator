@@ -4,8 +4,6 @@
 
 # Godot Roguelike Map Generator
 
----
-
 ### Room algo works by:
 - Slices the screen in nine zones with variable horizontal and vertical sizes.
 - Merges one to three cells.
