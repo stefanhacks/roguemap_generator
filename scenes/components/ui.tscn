@@ -38,6 +38,6 @@ custom_minimum_size = Vector2(210, 88)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "G: Generate Map
-R: Connect Rooms
-A: Add Corridor"
+A: Add Corridor
+R: Connect Rooms"
 justification_flags = 131

@@ -13,6 +13,8 @@ config_version=5
 config/name="RogueMap"
 run/main_scene="res://scenes/tests/test_map_generator.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.145098, 0.0745098, 0.101961, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]
@@ -88,4 +90,5 @@ click={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.145098, 0.0745098, 0.101961, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
