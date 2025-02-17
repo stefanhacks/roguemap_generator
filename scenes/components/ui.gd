@@ -11,4 +11,3 @@ func fade_ui() -> void:
 	await get_tree().create_timer(3).timeout
 	var tween = get_tree().create_tween()
 	tween.tween_property(margin_container, "modulate:a", 0, 1)
-	print("hiding")
