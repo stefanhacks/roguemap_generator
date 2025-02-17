@@ -73,8 +73,9 @@ func make_roads() -> void:
 
 func add_random_road() -> void:
 	var rooms = room_nodes.get_children()
-	rooms.shuffle()
-	path_generator.make_path(rooms[0].room, rooms[1].room)
+	if rooms.size() > 0:
+		rooms.shuffle()
+		path_generator.make_path(rooms[0].room, rooms[1].room)
 
 
 func _make_background(dimensions: Vector2i) -> void:
