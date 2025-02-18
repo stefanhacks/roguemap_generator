@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/fd4a5c58-9a14-4f27-b53e-a361fba9f18f" />
 </p>
 
-# Godot Roguelike Map Generator
+# Roguelike Map Generator in Godot
 
 ### Room algo works by:
 - Slices the screen in nine zones with variable horizontal and vertical sizes.
@@ -21,16 +21,11 @@
 - Has a method which connects all rooms by iterating through a shuffled list. This ensures all rooms are connected at least once.
 
 ### Graphics:
-- Original Tileset got from [Pìxel Poem, on itch.io](https://pixel-poem.itch.io/dungeon-assetpuck).
 - Used [monogram](https://datagoblin.itch.io/monogram) as the UI font.
+- Original Tileset got from [Pìxel Poem, on itch.io](https://pixel-poem.itch.io/dungeon-assetpuck).
 - In order to understand Godot Tileset terrains, I had to change a bit and expand in some of its options.
-
-### Shortcomings:
-- Tileset has repeated graphics. The reason for this is so I can compare the pathways from the Terrain editor with Godot's Documentation with less hassle.
-- Implementation might not be the most optimal one, I relied only on my own code and experience to implement this.
 
 ### Where to Go:
 - Comment the code.
 - Might make this prettier by adding custom rooms, objects and random objects within.
 - Define navigation zones, add agents.
-- IDK, not the current focus.
